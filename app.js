@@ -56,9 +56,9 @@
   };
 
   const DEFAULTS = {
-    name: 'Alex Morgan',
-    role: 'Software Architect & Creative Technologist',
-    bio: 'Bridging real-world dimensions and computational realities. Designing high-performance agentic systems, real-time engines, and aesthetic user interfaces.'
+    name: '劉嘉棟',
+    role: 'AIoT & 智慧物聯網 / Data Analysis',
+    bio: '專注於 AIoT 物聯網架構、數據分析與機器學習應用。熱愛探索邊緣端運算、即時感測串流與現代化 Web 交互設計，致力於打造融合軟硬體的智慧創新系統。'
   };
 
   // --- SVGs for Atmospheric Greetings ---
@@ -250,14 +250,28 @@
 
   // --- Profile Inline Edit Handlers ---
   function setupProfileEditing() {
-    // Load persisted values
+    // Load persisted values (or defaults if legacy values)
     const savedName = localStorage.getItem('reality_user_name');
     const savedRole = localStorage.getItem('reality_user_role');
     const savedBio = localStorage.getItem('reality_user_bio');
 
-    if (savedName) userNameEl.textContent = savedName;
-    if (savedRole) userRoleEl.textContent = savedRole;
-    if (savedBio) userBioEl.textContent = savedBio;
+    if (savedName && savedName !== 'Alex Morgan') {
+      userNameEl.textContent = savedName;
+    } else {
+      userNameEl.textContent = DEFAULTS.name;
+    }
+
+    if (savedRole && savedRole !== 'Software Architect & Creative Technologist') {
+      userRoleEl.textContent = savedRole;
+    } else {
+      userRoleEl.textContent = DEFAULTS.role;
+    }
+
+    if (savedBio && !savedBio.includes('Bridging real-world')) {
+      userBioEl.textContent = savedBio;
+    } else {
+      userBioEl.textContent = DEFAULTS.bio;
+    }
 
     const editableElements = [
       { el: userNameEl, key: 'reality_user_name', label: 'Name' },

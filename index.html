@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reality Time // Personal Profile</title>
-  <meta name="description" content="A live reality time dashboard and futuristic personal profile hub with precision clock engine and dynamic time metrics.">
+  <title>劉嘉棟 (Arthur Liu) // Personal Profile & Reality Time Engine</title>
+  <meta name="description" content="劉嘉棟 (Arthur Liu) 的個人專屬網頁 - 包含個人簡介、專業技能矩陣 (Skills)、精選專案 (Projects) 以及高精度 JavaScript 即時時鐘 (Live Clock)。">
   
   <!-- Google Fonts: Outfit & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,8 +29,16 @@
     <header class="top-nav" role="banner">
       <div class="brand-badge">
         <span class="pulse-beacon" aria-hidden="true"></span>
-        <span id="system-status-text">Reality Engine // Live Sync</span>
+        <span id="system-status-text">Arthur Liu // Live Portal</span>
       </div>
+
+      <!-- Quick Nav Links -->
+      <nav class="nav-links" aria-label="Page Navigation">
+        <a href="#profile-section" class="nav-link">Profile</a>
+        <a href="#clock-section" class="nav-link">Live Clock</a>
+        <a href="#skills-section" class="nav-link">Skills</a>
+        <a href="#projects-section" class="nav-link">Projects</a>
+      </nav>
 
       <div class="top-controls">
         <!-- Theme Accent Picker -->
@@ -55,15 +63,15 @@
       </div>
     </header>
 
-    <!-- Main Dual Panel Grid -->
+    <!-- Main Dual Panel Grid (Requirement 1: Profile & Requirement 4: Live Clock) -->
     <main class="main-grid" role="main">
 
-      <!-- Left Column: Personal Profile Card -->
-      <section class="glass-panel profile-card" aria-label="Personal Profile Information">
+      <!-- Left Column: Personal Profile Card (Requirement 1: Profile) -->
+      <section class="glass-panel profile-card" id="profile-section" aria-label="Personal Profile Information">
         <div class="avatar-wrapper">
           <div class="avatar-halo" aria-hidden="true"></div>
           <div class="avatar-img-container" id="avatar-container">
-            <img src="avatar.jpg" alt="Profile Avatar" id="profile-img">
+            <img src="avatar.jpg" alt="劉嘉棟 Avatar" id="profile-img">
           </div>
           <div class="status-badge" title="Status: Online & In Reality Sync">
             <span class="status-dot"></span>
@@ -73,33 +81,45 @@
 
         <!-- Inline Editable User Name -->
         <div class="name-container">
-          <h1 class="profile-name" id="user-name" contenteditable="true" spellcheck="false" title="Click to edit your name">Alex Morgan</h1>
+          <h1 class="profile-name" id="user-name" contenteditable="true" spellcheck="false" title="Click to edit your name">劉嘉棟</h1>
           <svg class="edit-hint-icon" id="edit-hint-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 20h9"></path>
             <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
           </svg>
         </div>
 
-        <!-- Inline Editable Role Title -->
+        <!-- Inline Editable Role & Department Title -->
         <div class="profile-role" id="user-role" contenteditable="true" spellcheck="false" title="Click to edit your title">
-          Software Architect & Creative Technologist
+          AIoT & 智慧物聯網 / Data Analysis
         </div>
 
         <!-- Inline Editable Bio -->
         <p class="profile-bio" id="user-bio" contenteditable="true" spellcheck="false" title="Click to edit your bio">
-          Bridging real-world dimensions and computational realities. Designing high-performance agentic systems, real-time engines, and aesthetic user interfaces.
+          專注於 AIoT 物聯網架構、數據分析與機器學習應用。熱愛探索邊緣端運算、即時感測串流與現代化 Web 交互設計，致力於打造融合軟硬體的智慧創新系統。
         </p>
 
         <!-- Topic Tags -->
         <div class="tags-container" aria-label="Focus Areas">
-          <span class="tag-chip">#SystemDesign</span>
-          <span class="tag-chip">#FullStack</span>
-          <span class="tag-chip">#AIEngineering</span>
-          <span class="tag-chip">#RealTimeWeb</span>
+          <span class="tag-chip">#AIoT</span>
+          <span class="tag-chip">#DataAnalysis</span>
+          <span class="tag-chip">#MachineLearning</span>
+          <span class="tag-chip">#EmbeddedSystems</span>
+          <span class="tag-chip">#Python</span>
+          <span class="tag-chip">#WebDev</span>
         </div>
 
         <!-- Quick Profile Meta Grid -->
         <div class="profile-meta-row">
+          <div class="meta-item">
+            <span class="meta-label">Department / Field</span>
+            <span class="meta-val" id="profile-dept-text">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+              <span>AIoT / 資訊工程</span>
+            </span>
+          </div>
           <div class="meta-item">
             <span class="meta-label">Location Timezone</span>
             <span class="meta-val" id="profile-tz-display">
@@ -108,7 +128,7 @@
                 <line x1="2" y1="12" x2="22" y2="12"></line>
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
               </svg>
-              <span id="profile-tz-text">Detecting...</span>
+              <span id="profile-tz-text">Asia/Taipei</span>
             </span>
           </div>
           <div class="meta-item">
@@ -123,8 +143,8 @@
         </div>
       </section>
 
-      <!-- Right Column: Reality Time Engine Dashboard -->
-      <section class="glass-panel reality-clock-card" aria-label="Reality Time Engine">
+      <!-- Right Column: Reality Time Engine Dashboard (Requirement 4: Live Clock) -->
+      <section class="glass-panel reality-clock-card" id="clock-section" aria-label="Reality Time Engine">
         
         <!-- Clock Header & Dynamic Greeting -->
         <div class="clock-header">
@@ -142,7 +162,7 @@
           </div>
         </div>
 
-        <!-- Master Digital Time Display -->
+        <!-- Master Digital Time Display (Live auto-updating HH:MM:SS) -->
         <div class="clock-display-wrapper" id="clock-display-wrapper">
           <div class="digital-clock" id="digital-clock" aria-live="polite">
             <span class="time-part" id="clock-hours">00</span>
@@ -176,7 +196,7 @@
         <div class="metrics-grid">
           <div class="metric-card">
             <span class="metric-title">Timezone Offset</span>
-            <span class="metric-value" id="metric-offset">UTC+00:00</span>
+            <span class="metric-value" id="metric-offset">UTC+08:00</span>
           </div>
           <div class="metric-card">
             <span class="metric-title">Unix Epoch (Sec)</span>
@@ -203,6 +223,279 @@
       </section>
     </main>
 
+    <!-- Requirement 2: Skills Section -->
+    <section class="glass-panel skills-section" id="skills-section" aria-label="Technical Skills Matrix">
+      <div class="section-title-wrapper">
+        <div class="section-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+          <span>Skill Matrix</span>
+        </div>
+        <h2 class="section-heading">專業技術能力 // Core Proficiencies</h2>
+        <p class="section-subheading">涵蓋物聯網嵌入式架構、AI 機器學習推論、即時時序數據分析與現代化前端交互工程。</p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Skill 1: Python -->
+        <div class="skill-card">
+          <div class="skill-top">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-name">Python</h3>
+              <span class="skill-level">Advanced (92%)</span>
+            </div>
+          </div>
+          <p class="skill-desc">精通數據清洗 (Pandas, NumPy)、自動化串流處理與機器學習模型開發 (PyTorch / Scikit-Learn)。</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-fill" style="width: 92%;"></div>
+          </div>
+          <div class="skill-tags">
+            <span>Pandas</span>
+            <span>NumPy</span>
+            <span>PyTorch</span>
+            <span>Automation</span>
+          </div>
+        </div>
+
+        <!-- Skill 2: C / C++ -->
+        <div class="skill-card">
+          <div class="skill-top">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2"/>
+                <rect x="9" y="9" width="6" height="6"/>
+                <line x1="9" y1="1" x2="9" y2="4"/>
+                <line x1="15" y1="1" x2="15" y2="4"/>
+                <line x1="9" y1="20" x2="9" y2="23"/>
+                <line x1="15" y1="20" x2="15" y2="23"/>
+                <line x1="20" y1="9" x2="23" y2="9"/>
+                <line x1="20" y1="14" x2="23" y2="14"/>
+                <line x1="1" y1="9" x2="4" y2="9"/>
+                <line x1="1" y1="14" x2="4" y2="14"/>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-name">C / C++</h3>
+              <span class="skill-level">Proficient (88%)</span>
+            </div>
+          </div>
+          <p class="skill-desc">嵌入式微控制器韌體開發、記憶體底層最佳化、周邊感測器通訊與即時演算法實作。</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-fill" style="width: 88%;"></div>
+          </div>
+          <div class="skill-tags">
+            <span>Embedded</span>
+            <span>ESP32</span>
+            <span>Arduino</span>
+            <span>Algorithms</span>
+          </div>
+        </div>
+
+        <!-- Skill 3: Machine Learning & AI -->
+        <div class="skill-card">
+          <div class="skill-top">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5v1.5h-4v-1.5c-1.2-.7-2-2-2-3.5a4 4 0 0 1 4-4z"/>
+                <path d="M10 14h4v3a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-3z"/>
+                <line x1="10" y1="22" x2="14" y2="22"/>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-name">Machine Learning & AI</h3>
+              <span class="skill-level">Proficient (85%)</span>
+            </div>
+          </div>
+          <p class="skill-desc">特徵工程、分類與回歸預測模型建構、邊緣端推論整合以及異常狀態智能檢測。</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-fill" style="width: 85%;"></div>
+          </div>
+          <div class="skill-tags">
+            <span>Scikit-Learn</span>
+            <span>Computer Vision</span>
+            <span>Anomaly Detect</span>
+          </div>
+        </div>
+
+        <!-- Skill 4: IoT & Smart Hardware -->
+        <div class="skill-card">
+          <div class="skill-top">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                <line x1="12" y1="20" x2="12.01" y2="20"/>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-name">IoT & Smart Systems</h3>
+              <span class="skill-level">Advanced (90%)</span>
+            </div>
+          </div>
+          <p class="skill-desc">ESP32 / 物聯網節點佈建、MQTT 通訊協議、感測器串流整合與遠端設備遙測控制。</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-fill" style="width: 90%;"></div>
+          </div>
+          <div class="skill-tags">
+            <span>MQTT</span>
+            <span>Sensors</span>
+            <span>Edge IoT</span>
+            <span>Telemetry</span>
+          </div>
+        </div>
+
+        <!-- Skill 5: Web Development -->
+        <div class="skill-card">
+          <div class="skill-top">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-name">Web Development</h3>
+              <span class="skill-level">Proficient (88%)</span>
+            </div>
+          </div>
+          <p class="skill-desc">HTML5 語意化架構、現代 CSS 玻璃擬態視覺設計、原生 JavaScript (ES6+) 與動態響應介面。</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-fill" style="width: 88%;"></div>
+          </div>
+          <div class="skill-tags">
+            <span>HTML5</span>
+            <span>Vanilla CSS</span>
+            <span>JavaScript ES6+</span>
+            <span>Glassmorphism</span>
+          </div>
+        </div>
+
+        <!-- Skill 6: Data Analysis & Visualization -->
+        <div class="skill-card">
+          <div class="skill-top">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-name">Data Analysis</h3>
+              <span class="skill-level">Proficient (89%)</span>
+            </div>
+          </div>
+          <p class="skill-desc">時序感測數據探索、異常過濾、統計特徵擷取與互動式視覺化資訊儀表板呈現。</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-fill" style="width: 89%;"></div>
+          </div>
+          <div class="skill-tags">
+            <span>Data Pipeline</span>
+            <span>Matplotlib</span>
+            <span>Statistics</span>
+            <span>Dashboard</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requirement 3: Projects Section -->
+    <section class="glass-panel projects-section" id="projects-section" aria-label="Featured Engineering Projects">
+      <div class="section-title-wrapper">
+        <div class="section-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          <span>Featured Works</span>
+        </div>
+        <h2 class="section-heading">專案作品展示 // Projects Showcase</h2>
+        <p class="section-subheading">探索兼具軟硬體整合、精準計時引擎與現代美學設計的工程專案。</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1: Reality Time & Personal Dashboard -->
+        <article class="project-card">
+          <div class="project-card-header">
+            <div class="project-status-pill">
+              <span class="status-dot"></span>
+              <span>Live Deployment</span>
+            </div>
+            <span class="project-year">2026</span>
+          </div>
+          
+          <h3 class="project-title">Reality Time & Personal Profile Hub</h3>
+          <p class="project-desc">
+            結合 Cyberpunk 玻璃擬態美學與毫秒級高精度 JavaScript 即時時鐘引擎的個人專屬儀表板。支援 12/24H 即時時制切換、日光流逝動態進度、4 種自訂主題色彩調配、在線即時編輯儲存與完整響應式動畫。
+          </p>
+
+          <div class="project-tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3 Glassmorphism</span>
+            <span class="tech-tag">JavaScript (ES6+)</span>
+            <span class="tech-tag">GitHub Pages</span>
+            <span class="tech-tag">Precision Engine</span>
+          </div>
+
+          <div class="project-actions">
+            <a href="https://arthurliu424.github.io/0916/" target="_blank" rel="noopener noreferrer" class="project-btn primary" title="開啟 Live Website 演示">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              <span>Live Website</span>
+            </a>
+            <a href="https://github.com/ArthurLiu424/0916" target="_blank" rel="noopener noreferrer" class="project-btn secondary" title="檢視 GitHub 原始碼">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+              <span>GitHub Repo</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2: AIoT Real-Time Telemetry & Sensor Monitor -->
+        <article class="project-card">
+          <div class="project-card-header">
+            <div class="project-status-pill upcoming">
+              <span class="status-dot"></span>
+              <span>Semester Project</span>
+            </div>
+            <span class="project-year">2026 Fall</span>
+          </div>
+          
+          <h3 class="project-title">AIoT Real-Time Sensor Telemetry Monitor</h3>
+          <p class="project-desc">
+            智慧感測物聯網節點與邊緣串流分析系統。透過 ESP32 與溫濕度/環境感測模組進行邊緣數據採樣，利用 MQTT 協議即時傳輸至後端伺服器進行數據清洗與異常統計分析，並結合前端動態儀表板呈現連續時序圖表。
+          </p>
+
+          <div class="project-tech-stack">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">C++ / ESP32</span>
+            <span class="tech-tag">MQTT Protocol</span>
+            <span class="tech-tag">WebSockets</span>
+            <span class="tech-tag">Data Visualization</span>
+          </div>
+
+          <div class="project-actions">
+            <a href="https://github.com/ArthurLiu424/0916" target="_blank" rel="noopener noreferrer" class="project-btn secondary" title="檢視專案庫與實作進度">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+              <span>GitHub Repo</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- Bottom Dock: Actions and Connectivity -->
     <footer class="bottom-dock" role="contentinfo">
       <div class="dock-left">
@@ -227,28 +520,14 @@
         </button>
       </div>
 
+      <div class="dock-center">
+        <span>© 2026 劉嘉棟 (Arthur Liu) · Built with Antigravity & AI</span>
+      </div>
+
       <div class="social-links" aria-label="Social connections">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub" title="GitHub">
+        <a href="https://github.com/ArthurLiu424/0916" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub Repository" title="GitHub / ArthurLiu424">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-          </svg>
-        </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter" title="Twitter / X">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-          </svg>
-        </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn" title="LinkedIn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-            <rect x="2" y="9" width="4" height="12"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
-          </svg>
-        </a>
-        <a href="mailto:hello@realitytime.io" class="social-icon-btn" aria-label="Email" title="Email Contact">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
         </a>
       </div>
