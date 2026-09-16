@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reality Time // Personal Profile</title>
+  <meta name="description" content="A live reality time dashboard and futuristic personal profile hub with precision clock engine and dynamic time metrics.">
+  
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Dynamic Lighting -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="orb orb-1" id="orb1"></div>
+    <div class="orb orb-2" id="orb2"></div>
+    <div class="orb orb-3" id="orb3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="dashboard-container">
+    
+    <!-- Top Navigation & System Status -->
+    <header class="top-nav" role="banner">
+      <div class="brand-badge">
+        <span class="pulse-beacon" aria-hidden="true"></span>
+        <span id="system-status-text">Reality Engine // Live Sync</span>
+      </div>
+
+      <div class="top-controls">
+        <!-- Theme Accent Picker -->
+        <div class="theme-selector" title="Choose Accent Hue">
+          <div class="theme-dot cyan active" data-theme="cyan" id="theme-cyan" role="button" aria-label="Cyan Theme" tabindex="0"></div>
+          <div class="theme-dot violet" data-theme="violet" id="theme-violet" role="button" aria-label="Violet Theme" tabindex="0"></div>
+          <div class="theme-dot emerald" data-theme="emerald" id="theme-emerald" role="button" aria-label="Emerald Theme" tabindex="0"></div>
+          <div class="theme-dot amber" data-theme="amber" id="theme-amber" role="button" aria-label="Amber Theme" tabindex="0"></div>
+        </div>
+
+        <!-- 12H / 24H Toggle Button -->
+        <button class="btn-icon" id="format-toggle-btn" title="Toggle 12h / 24h format" aria-label="Toggle 12/24 hour format">
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;" id="format-toggle-text">24H</span>
+        </button>
+
+        <!-- Fullscreen Mode Toggle -->
+        <button class="btn-icon" id="fullscreen-btn" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Dual Panel Grid -->
+    <main class="main-grid" role="main">
+
+      <!-- Left Column: Personal Profile Card -->
+      <section class="glass-panel profile-card" aria-label="Personal Profile Information">
+        <div class="avatar-wrapper">
+          <div class="avatar-halo" aria-hidden="true"></div>
+          <div class="avatar-img-container" id="avatar-container">
+            <img src="avatar.jpg" alt="Profile Avatar" id="profile-img">
+          </div>
+          <div class="status-badge" title="Status: Online & In Reality Sync">
+            <span class="status-dot"></span>
+            <span>ACTIVE</span>
+          </div>
+        </div>
+
+        <!-- Inline Editable User Name -->
+        <div class="name-container">
+          <h1 class="profile-name" id="user-name" contenteditable="true" spellcheck="false" title="Click to edit your name">Alex Morgan</h1>
+          <svg class="edit-hint-icon" id="edit-hint-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+        </div>
+
+        <!-- Inline Editable Role Title -->
+        <div class="profile-role" id="user-role" contenteditable="true" spellcheck="false" title="Click to edit your title">
+          Software Architect & Creative Technologist
+        </div>
+
+        <!-- Inline Editable Bio -->
+        <p class="profile-bio" id="user-bio" contenteditable="true" spellcheck="false" title="Click to edit your bio">
+          Bridging real-world dimensions and computational realities. Designing high-performance agentic systems, real-time engines, and aesthetic user interfaces.
+        </p>
+
+        <!-- Topic Tags -->
+        <div class="tags-container" aria-label="Focus Areas">
+          <span class="tag-chip">#SystemDesign</span>
+          <span class="tag-chip">#FullStack</span>
+          <span class="tag-chip">#AIEngineering</span>
+          <span class="tag-chip">#RealTimeWeb</span>
+        </div>
+
+        <!-- Quick Profile Meta Grid -->
+        <div class="profile-meta-row">
+          <div class="meta-item">
+            <span class="meta-label">Location Timezone</span>
+            <span class="meta-val" id="profile-tz-display">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span id="profile-tz-text">Detecting...</span>
+            </span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Reality Status</span>
+            <span class="meta-val" style="color: var(--success);" id="profile-sync-status">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Synchronized
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Reality Time Engine Dashboard -->
+      <section class="glass-panel reality-clock-card" aria-label="Reality Time Engine">
+        
+        <!-- Clock Header & Dynamic Greeting -->
+        <div class="clock-header">
+          <div class="time-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Reality Chronometer</span>
+          </div>
+
+          <div class="greeting-container" id="greeting-wrapper">
+            <span class="greeting-icon" id="greeting-icon"></span>
+            <span id="greeting-text">Welcome</span>
+          </div>
+        </div>
+
+        <!-- Master Digital Time Display -->
+        <div class="clock-display-wrapper" id="clock-display-wrapper">
+          <div class="digital-clock" id="digital-clock" aria-live="polite">
+            <span class="time-part" id="clock-hours">00</span>
+            <span class="colon-separator">:</span>
+            <span class="time-part" id="clock-minutes">00</span>
+            <span class="colon-separator">:</span>
+            <span class="time-part" id="clock-seconds">00</span>
+            <span class="millis-part" id="clock-millis">.000</span>
+            <span class="ampm-pill" id="clock-ampm" style="display: none;">AM</span>
+          </div>
+
+          <div class="full-date-row">
+            <span id="date-weekday">Loading day...</span>
+            <span class="date-dot" aria-hidden="true"></span>
+            <span id="date-full">Loading full date...</span>
+          </div>
+        </div>
+
+        <!-- Today's Solar & Daylight Cycle Progress -->
+        <div class="day-progress-section">
+          <div class="progress-header">
+            <span>Daily Reality Elapsed</span>
+            <span class="progress-value" id="day-progress-pct">0.00%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="day-progress-bar"></div>
+          </div>
+        </div>
+
+        <!-- High-Precision Reality Metrics -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-title">Timezone Offset</span>
+            <span class="metric-value" id="metric-offset">UTC+00:00</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">Unix Epoch (Sec)</span>
+            <span class="metric-value" id="metric-epoch">0000000000</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">Day of Year</span>
+            <span class="metric-value" id="metric-day-of-year">Day 000</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">Calendar Week</span>
+            <span class="metric-value" id="metric-week">Week 00</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">Session Uptime</span>
+            <span class="metric-value" id="metric-uptime">00:00:00</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-title">Year Progress</span>
+            <span class="metric-value" id="metric-year-pct">0.0%</span>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- Bottom Dock: Actions and Connectivity -->
+    <footer class="bottom-dock" role="contentinfo">
+      <div class="dock-left">
+        <button class="dock-btn" id="btn-copy-time" title="Copy exact current reality timestamp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span>Copy Timestamp</span>
+        </button>
+
+        <button class="dock-btn" id="btn-toggle-millis" title="Show or hide milliseconds">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+          <span id="toggle-millis-text">Hide Millis</span>
+        </button>
+
+        <button class="dock-btn" id="btn-reset-profile" title="Reset profile details to default">
+          <span>Reset Profile</span>
+        </button>
+      </div>
+
+      <div class="social-links" aria-label="Social connections">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub" title="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter" title="Twitter / X">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+          </svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn" title="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+        <a href="mailto:hello@realitytime.io" class="social-icon-btn" aria-label="Email" title="Email Contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Interactive Feedback Toast -->
+  <div class="toast-msg" id="toast-msg" role="status" aria-live="polite">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toast-text">Updated successfully</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
